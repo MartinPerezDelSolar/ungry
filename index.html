@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angry Birds Clone</title>
+  <style>
+    #game-container {
+      position: relative;
+      width: 800px;
+      height: 400px;
+      border: 2px solid #000;
+      margin: 0 auto;
+    }
+
+    #slingshot {
+      position: absolute;
+      bottom: 50px;
+      left: 50px;
+      width: 50px;
+      height: 200px;
+      background-color: #654321; /* Brown */
+    }
+
+    #bird {
+      position: absolute;
+      bottom: 250px;
+      left: 100px;
+      width: 50px;
+      height: 50px;
+      background-color: #ff0000; /* Red */
+      border-radius: 50%;
+    }
+
+    #target {
+      position: absolute;
+      bottom: 100px;
+      right: 50px;
+      width: 50px;
+      height: 50px;
+      background-color: #00ff00; /* Green */
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+  <div id="game-container">
+    <div id="slingshot"></div>
+    <div id="bird"></div>
+    <div id="target"></div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const bird = document.getElementById("bird");
+      const slingshot = document.getElementById("slingshot");
+      const target = document.getElementById("target");
+      
+      let isDragging = false;
+      
+      bird.addEventListener("mousedown", function(event) {
+        isDragging = true;
+      });
+      
+      document.addEventListener("mousemove", function(event) {
+        if (isDragging) {
+          const mouseY = event.clientY;
+          bird.style.bottom = `${mouseY}px`;
+        }
+      });
+      
+      document.addEventListener("mouseup", function(event) {
+        isDragging = false;
+        // Add logic for releasing the bird and applying force
+        // towards the target
+      });
+    });
+  </script>
+</body>
+</html>
